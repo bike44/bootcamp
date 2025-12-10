@@ -100,7 +100,7 @@
           "value": 25
         }
       ],
-      "type": "PARTNER"
+      "type": "PARTNERS"
     },
     {
       "source": {
@@ -201,6 +201,39 @@
         "external_id": "279841"
       },
       "type": "CONTAINS"
+    },
+    {
+      "source": {
+        "type": "Account",
+        "external_id": "auth0|69390f96a3af3def7657e85d"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "alice"
+      },
+      "type": "IDENTIFIES"
+    },
+    {
+      "source": {
+        "type": "Account",
+        "external_id": "auth0|69390f6ba3af3def7657e846"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "bob"
+      },
+      "type": "IDENTIFIES"
+    },
+    {
+      "source": {
+        "type": "Account",
+        "external_id": "auth0|69390f832a9de209ac695eed"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "caroline"
+      },
+      "type": "IDENTIFIES"
     }
   ]
 }
