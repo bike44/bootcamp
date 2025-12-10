@@ -253,6 +253,43 @@
 											"response": []
 										}
 									]
+								},
+								{
+									"name": "Get ContX IQ Policies",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"{{query_name}}\",\n    \"display_name\": \"{{query_display_name}}\",\n    \"description\": \"{{query_description}}\",\n    \"project_id\": \"{{app_space_id}}\",\n    \"policy_id\": \"{{ciq_authorization_policy_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"product.external_id\\\", \\\"product.property.name\\\" ], \\\"relationships\\\": [], \\\"filter\\\": { \\\"attribute\\\": \\\"product.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$productExternalId\\\" } }\",\n    \"status\": \"ACTIVE\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{ik_api_host}}/configs/v1/authorization-policies?project_id={{project_id}}",
+											"host": [
+												"{{ik_api_host}}"
+											],
+											"path": [
+												"configs",
+												"v1",
+												"authorization-policies"
+											],
+											"query": [
+												{
+													"key": "project_id",
+													"value": "{{project_id}}"
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
