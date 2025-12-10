@@ -221,15 +221,19 @@ def main():
     
     # Extract the actual list
     if data_type == "nodes":
-        if isinstance(data, dict) and "nodes" in data:
-            items = data["nodes"]
-        elif isinstance(data, list):
-            items = data
-        else:
-            items = [data]
         items = data
-
-        print(items)
+        # Handle nested structures: {"nodes": [...]} or {"nodes": {"nodes": [...]}}
+        while isinstance(items, dict) and "nodes" in items:
+            items = items["nodes"]
+        
+        # If still not a list, wrap it
+        if not isinstance(items, list):
+            items = [items] if items else []
+        
+        # Ensure items is a list
+        if not isinstance(items, list):
+            print(f"Error: Expected a list of nodes, got {type(items)}")
+            return 1
         
         try:
             result = post_nodes(INDYKITE_TOKEN, items)
