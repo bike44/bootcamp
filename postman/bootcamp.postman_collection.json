@@ -145,7 +145,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses-for-user\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"gid:AAAAAi6bev9Ah0GnrviQy7lfDgA\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Token\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Token)-[:IDENTIFIES]->(user:User)-[rel:CAN_ACCESS]->(product:Product)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"Token\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"product.property.name\\\", \\\"product.external_id\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] } }\",\n    \"status\": \"ACTIVE\"\n}\n",
+													"raw": "{\n    \"name\": \"get-company-licenses-for-user\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Token\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Token)-[:IDENTIFIES]->(user:User)-[rel:CAN_ACCESS]->(product:Product)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"Token\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"product.property.name\\\", \\\"product.external_id\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] } }\",\n    \"status\": \"ACTIVE\"\n}\n",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -173,7 +173,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses-by-User\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return a list of companies and licenses\",\n    \"project_id\": \"gid:AAAAAi6bev9Ah0GnrviQy7lfDgA\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Account\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Account)-[:IDENTIFIES]->(user:User)<-[:EMPLOYS]->(company:Company)-[jv_rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"app1\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"user\\\", \\\"user.*\\\", \\\"company\\\", \\\"company.*\\\", \\\"license\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\", \\\"jv_rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+													"raw": "{\n    \"name\": \"get-company-licenses-by-User\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return a list of companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Account\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Account)-[:IDENTIFIES]->(person:Person)<-[:EMPLOYS]->(company:Company)-[jv_rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"app1\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"person\\\", \\\"person.*\\\", \\\"company\\\", \\\"company.*\\\", \\\"license\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\", \\\"jv_rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -230,7 +230,7 @@
 												"header": [],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"user.external_id\\\", \\\"user.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+													"raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"person.external_id\\\", \\\"person.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -313,7 +313,7 @@
 										"header": [
 											{
 												"key": "X-IK-ClientKey",
-												"value": "{{api_token}}",
+												"value": "{{app_agent_token}}",
 												"type": "text"
 											}
 										],
