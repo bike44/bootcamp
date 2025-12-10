@@ -1,0 +1,206 @@
+{
+  "relationships": [
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "yellow"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "north"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 20
+        }
+      ],
+      "type": "PARTNERS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "yellow"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "west"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 45
+        }
+      ],
+      "type": "OPERATES"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "red"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "north"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 55
+        }
+      ],
+      "type": "OPERATES"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "red"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "west"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 20
+        }
+      ],
+      "type": "PARTNERS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "red"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "south"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 60
+        }
+      ],
+      "type": "OPERATES"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "blue"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "north"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 25
+        }
+      ],
+      "type": "PARTNER"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "blue"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "west"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 35
+        }
+      ],
+      "type": "PARTNERS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "blue"
+      },
+      "target": {
+        "type": "License",
+        "external_id": "south"
+      },
+      "properties": [
+        {
+          "type": "jv_share",
+          "value": 40
+        }
+      ],
+      "type": "PARTNERS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "yellow"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "caroline"
+      },
+      "type": "EMPLOYS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "red"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "alice"
+      },
+      "type": "EMPLOYS"
+    },
+    {
+      "source": {
+        "type": "Company",
+        "external_id": "blue"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "bob"
+      },
+      "type": "EMPLOYS"
+    },
+    {
+      "source": {
+        "type": "License",
+        "external_id": "north"
+      },
+      "target": {
+        "type": "Well",
+        "external_id": "43765"
+      },
+      "type": "CONTAINS"
+    },
+    {
+      "source": {
+        "type": "License",
+        "external_id": "west"
+      },
+      "target": {
+        "type": "Well",
+        "external_id": "271301"
+      },
+      "type": "CONTAINS"
+    },
+    {
+      "source": {
+        "type": "License",
+        "external_id": "south"
+      },
+      "target": {
+        "type": "Well",
+        "external_id": "279841"
+      },
+      "type": "CONTAINS"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "nodes": [
+    {
+      "external_id": "bob",
+      "type": "Person",
+      "is_identity": true,
+      "properties": [
+        {
+          "type": "name",
+          "value": "Bob Smith"
+        }
+      ]
+    },
+    {
+      "external_id": "alice",
+      "type": "Person",
+      "is_identity": true,
+      "properties": [
+        {
+          "type": "name",
+          "value": "Alice Smith"
+        }
+      ]
+    },
+    {
+      "external_id": "caroline",
+      "type": "Person",
+      "is_identity": true,
+      "properties": [
+        {
+          "type": "name",
+          "value": "Caroline Smith"
+        }
+      ]
+    },
+    {
+      "external_id": "yellow",
+      "type": "Company",
+      "properties": [
+        {
+          "type": "name",
+          "value": "Yellow"
+        }
+      ]
+    },
+    {
+      "external_id": "red",
+      "type": "Company",
+      "properties": [
+        {
+          "type": "name",
+          "value": "Red"
+        }
+      ]
+    },
+    {
+      "external_id": "blue",
+      "type": "Company",
+      "properties": [
+        {
+          "type": "name",
+          "value": "Blue"
+        }
+      ]
+    },
+    {
+      "external_id": "south",
+      "type": "License",
+      "properties": [
+        {
+          "type": "name",
+          "value": "South"
+        }
+      ]
+    },
+    {
+      "external_id": "north",
+      "type": "License",
+      "properties": [
+        {
+          "type": "name",
+          "value": "North"
+        }
+      ]
+    },
+    {
+      "external_id": "west",
+      "type": "License",
+      "properties": [
+        {
+          "type": "name",
+          "value": "West"
+        }
+      ]
+    },
+    {
+      "external_id": "43765",
+      "type": "Well",
+      "properties": [
+        {
+          "type": "name",
+          "value": "Skyfall"
+        }
+      ]
+    },
+    {
+      "external_id": "279841",
+      "type": "Well",
+      "properties": [
+        {
+          "type": "name",
+          "value": "Thunderball"
+        }
+      ]
+    },
+    {
+      "external_id": "271301",
+      "type": "Well",
+      "properties": [
+        {
+          "type": "name",
+          "value": "NAJvRigA"
+        }
+      ]
+    }
+  ]
+}
