@@ -13,6 +13,13 @@ load_dotenv()
 # Configuration from environment variables
 INDYKITE_HOST = os.getenv("INDYKITE_HOST", "https://api.indykite.com")
 INDYKITE_TOKEN = os.getenv("INDYKITE_TOKEN")
+SSL_VERIFY = os.getenv("SSL_VERIFY", "false").lower() != "false"
+
+# Disable SSL warnings if verification is disabled
+if not SSL_VERIFY:
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    print("⚠️  WARNING: SSL certificate verification is DISABLED")
 
 
 def post_nodes(token: str, nodes: list):
@@ -31,7 +38,7 @@ def post_nodes(token: str, nodes: list):
     print(f"POST {url}")
     print(f"Sending {len(nodes)} nodes...")
     
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers, json=payload, verify=SSL_VERIFY)
     print(f"Response status: {response.status_code}")
     
     if response.status_code != 200 and response.status_code != 201:
@@ -96,7 +103,7 @@ def post_relationships(token: str, payload):
     print(f"POST {url}")
     print(f"Sending {count} relationships...")
     
-    response = requests.post(url, headers=headers, json=payload)
+    response = requests.post(url, headers=headers, json=payload, verify=SSL_VERIFY)
     print(f"Response status: {response.status_code}")
     
     if response.status_code != 200 and response.status_code != 201:

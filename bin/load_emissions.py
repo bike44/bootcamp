@@ -23,6 +23,13 @@ INDYKITE_TOKEN = os.getenv("INDYKITE_TOKEN")
 DEBUG_MODE = os.getenv("DEBUG_MODE", "false").lower() == "true"
 BATCH_SIZE = int(os.getenv("BATCH_SIZE", "250"))
 MAX_THREADS = int(os.getenv("MAX_THREADS", "6"))
+SSL_VERIFY = os.getenv("SSL_VERIFY", "false").lower() != "false"
+
+# Disable SSL warnings if verification is disabled
+if not SSL_VERIFY:
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    print("⚠️  WARNING: SSL certificate verification is DISABLED")
 
 
 def create_date_string(year: str, month: str, day: str) -> str:
@@ -96,7 +103,7 @@ def create_nodes_batch(token: str, nodes: List[Dict[str, Any]]) -> List[Dict[str
         return {"status": "debug", "nodes_processed": len(nodes)}
     
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, verify=SSL_VERIFY)
         print(f"    Response status: {response.status_code}")
         
         if response.status_code != 200 and response.status_code != 201:
@@ -150,7 +157,7 @@ def create_relationships_batch(token: str, relationships: List[Dict[str, Any]]) 
         return {"status": "debug", "relationships_processed": len(relationships)}
     
     try:
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=payload, verify=SSL_VERIFY)
         print(f"    Response status: {response.status_code}")
         
         if response.status_code != 200 and response.status_code != 201:
