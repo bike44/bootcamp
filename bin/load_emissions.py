@@ -139,8 +139,10 @@ def create_relationships_batch(token: str, relationships: List[Dict[str, Any]]) 
         "Content-Type": "application/json"
     }
     
-    # Relationships are sent as an array
-    payload = relationships
+    # Wrap relationships in the required format
+    payload = {
+        "relationships": relationships
+    }
     
     print("\n" + "="*80)
     print("FULL POST REQUEST DETAILS - RELATIONSHIPS")
