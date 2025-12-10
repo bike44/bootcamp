@@ -1,6 +1,21 @@
 {
   "nodes": [
     {
+      "external_id": "assessment-01",
+      "type": "DataQuality",
+      "is_identity": false,
+      "properties": [
+        {
+          "type": "score",
+          "value": 90
+        },
+        {
+          "type": "date",
+          "value": "2025-12-10"
+        }
+      ]
+    },
+    {
       "external_id": "bob",
       "type": "Person",
       "is_identity": true,
@@ -120,6 +135,16 @@
         {
           "type": "name",
           "value": "NAJvRigA"
+        }
+      ]
+    },
+    {
+      "external_id": "5195a49696d1bc5bbe22dd20-2",
+      "type": "Flaring",
+      "properties": [
+        {
+          "type": "volume",
+          "value": 8051.054189
         }
       ]
     }

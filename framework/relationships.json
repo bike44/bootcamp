@@ -234,6 +234,39 @@
         "external_id": "caroline"
       },
       "type": "IDENTIFIES"
+    },
+    {
+      "source": {
+        "type": "DataQuality",
+        "external_id": "assessment-01"
+      },
+      "target": {
+        "type": "Person",
+        "external_id": "caroline"
+      },
+      "type": "ASSESSED_BY"
+    },
+    {
+      "source": {
+        "type": "Flaring",
+        "external_id": "5195a49696d1bc5bbe22dd20"
+      },
+      "target": {
+        "type": "DataQuality",
+        "external_id": "assessment-01"
+      },
+      "type": "HAS_ASSESSMENT"
+    },
+    {
+      "source": {
+        "type": "Flaring",
+        "external_id": "5195a49696d1bc5bbe22dd20"
+      },
+      "target": {
+        "type": "Flaring",
+        "external_id": "5195a49696d1bc5bbe22dd20-2"
+      },
+      "type": "REPLACED_BY"
     }
   ]
 }
