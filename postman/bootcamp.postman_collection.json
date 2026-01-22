@@ -1,483 +1,651 @@
 {
-	"info": {
-		"_postman_id": "203577a3-d27d-4cf0-9413-48c4813550d6",
-		"name": "bootcamp",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "44082978",
-		"_collection_link": "https://dave-7425404.postman.co/workspace/Dave's-Workspace~ae6a2396-8696-4c37-82a4-9a942c3a536f/collection/44082978-203577a3-d27d-4cf0-9413-48c4813550d6?action=share&source=collection_link&creator=44082978"
-	},
-	"item": [
-		{
-			"name": "IndyKite",
-			"item": [
-				{
-					"name": "CIQ",
-					"item": [
-						{
-							"name": "Config",
-							"item": [
-								{
-									"name": "Company Licenses - Admin",
-									"item": [
-										{
-											"name": "Create CIQ Policy - Company Licenses",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) MATCH (company:Company)-[rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\":\\\"app1\\\", \\\"operator\\\":\\\"AND\\\", \\\"operands\\\": [ { \\\"attribute\\\":\\\"subject.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$_appId\\\" }, { \\\"attribute\\\":\\\"company.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$company_external_id\\\" } ] } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [\\\"company.*\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/authorization-policies",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"authorization-policies"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Update CIQ Policy - Company Licenses",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) MATCH (company:Company)-[rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\":\\\"app1\\\", \\\"operator\\\":\\\"AND\\\", \\\"operands\\\": [ { \\\"attribute\\\":\\\"subject.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$_appId\\\" }, { \\\"attribute\\\":\\\"company.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$company_external_id\\\" } ] } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [\\\"company.*\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"rel\\\", \\\"rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/authorization-policies/{{policy1_id}}",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"authorization-policies",
-														"{{policy1_id}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Create CIQ Query - Company Licenses",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"read-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return all of the licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy1_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/knowledge-queries",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"knowledge-queries"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Update CIQ Query - User Resources",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"read-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return all of the licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy1_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/knowledge-queries/{{query1_id}}",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"knowledge-queries",
-														"{{query1_id}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
-								{
-									"name": "Company Licenses as a user",
-									"item": [
-										{
-											"name": "Create CIQ Policy - Company Licenses by User",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses-for-user\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Token\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Token)-[:IDENTIFIES]->(user:User)-[rel:CAN_ACCESS]->(product:Product)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"Token\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"product.property.name\\\", \\\"product.external_id\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] } }\",\n    \"status\": \"ACTIVE\"\n}\n",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/authorization-policies",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"authorization-policies"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Update CIQ Policy - Company Licenses by User",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"get-company-licenses-by-User\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return a list of companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Account\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Account)-[:IDENTIFIES]->(person:Person)<-[:EMPLOYS]->(company:Company)-[jv_rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"app1\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"person\\\", \\\"person.*\\\", \\\"company\\\", \\\"company.*\\\", \\\"license\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\", \\\"jv_rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/authorization-policies/{{policy2_id}}",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"authorization-policies",
-														"{{policy2_id}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Create CIQ Query - Company Licenses by User",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"user.external_id\\\", \\\"user.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/knowledge-queries",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"knowledge-queries"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Update CIQ Query - Company Licenses by User",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"person.external_id\\\", \\\"person.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{ik_api_host}}/configs/v1/knowledge-queries/{{query2_id}}",
-													"host": [
-														"{{ik_api_host}}"
-													],
-													"path": [
-														"configs",
-														"v1",
-														"knowledge-queries",
-														"{{query2_id}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
-								{
-									"name": "Get ContX IQ Queries",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"{{query_name}}\",\n    \"display_name\": \"{{query_display_name}}\",\n    \"description\": \"{{query_description}}\",\n    \"project_id\": \"{{app_space_id}}\",\n    \"policy_id\": \"{{ciq_authorization_policy_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"product.external_id\\\", \\\"product.property.name\\\" ], \\\"relationships\\\": [], \\\"filter\\\": { \\\"attribute\\\": \\\"product.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$productExternalId\\\" } }\",\n    \"status\": \"ACTIVE\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{ik_api_host}}/configs/v1/knowledge-queries?project_id={{project_id}}",
-											"host": [
-												"{{ik_api_host}}"
-											],
-											"path": [
-												"configs",
-												"v1",
-												"knowledge-queries"
-											],
-											"query": [
-												{
-													"key": "project_id",
-													"value": "{{project_id}}"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get ContX IQ Policies",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"{{query_name}}\",\n    \"display_name\": \"{{query_display_name}}\",\n    \"description\": \"{{query_description}}\",\n    \"project_id\": \"{{app_space_id}}\",\n    \"policy_id\": \"{{ciq_authorization_policy_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"product.external_id\\\", \\\"product.property.name\\\" ], \\\"relationships\\\": [], \\\"filter\\\": { \\\"attribute\\\": \\\"product.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$productExternalId\\\" } }\",\n    \"status\": \"ACTIVE\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{ik_api_host}}/configs/v1/authorization-policies?project_id={{project_id}}",
-											"host": [
-												"{{ik_api_host}}"
-											],
-											"path": [
-												"configs",
-												"v1",
-												"authorization-policies"
-											],
-											"query": [
-												{
-													"key": "project_id",
-													"value": "{{project_id}}"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Execute",
-							"item": [
-								{
-									"name": "Get Licenses by Company",
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "X-IK-ClientKey",
-												"value": "{{app_agent_token}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"{{query1_id}}\", \n    \"input_params\": {\n        \"company_external_id\": \"red\"\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{ik_api_host}}/contx-iq/v1/execute",
-											"host": [
-												"{{ik_api_host}}"
-											],
-											"path": [
-												"contx-iq",
-												"v1",
-												"execute"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get Companies and Licenses by User",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{user_token}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "X-IK-ClientKey",
-												"value": "{{app_agent_token}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"{{query2_id}}\", \n    \"input_params\": {\n    }\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{ik_api_host}}/contx-iq/v1/execute",
-											"host": [
-												"{{ik_api_host}}"
-											],
-											"path": [
-												"contx-iq",
-												"v1",
-												"execute"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						}
-					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{service_token}}",
-								"type": "string"
-							}
-						]
-					},
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {},
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {},
-								"exec": [
-									""
-								]
-							}
-						}
-					]
-				}
-			]
-		}
-	],
-	"auth": {
-		"type": "bearer"
-	},
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"packages": {},
-				"exec": [
-					""
-				]
-			}
-		}
-	]
+  "info": {
+    "_postman_id": "203577a3-d27d-4cf0-9413-48c4813550d6",
+    "name": "bootcamp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44082978",
+    "_collection_link": "https://go.postman.co/collection/44082978-203577a3-d27d-4cf0-9413-48c4813550d6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "IndyKite",
+      "item": [
+        {
+          "name": "CIQ",
+          "item": [
+            {
+              "name": "Config",
+              "item": [
+                {
+                  "name": "Company Licenses - Admin",
+                  "item": [
+                    {
+                      "name": "Create CIQ Policy - Company Licenses",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) MATCH (company:Company)-[rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\":\\\"app1\\\", \\\"operator\\\":\\\"AND\\\", \\\"operands\\\": [ { \\\"attribute\\\":\\\"subject.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$_appId\\\" }, { \\\"attribute\\\":\\\"company.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$company_external_id\\\" } ] } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [\\\"company.*\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Policy - Company Licenses",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) MATCH (company:Company)-[rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\":\\\"app1\\\", \\\"operator\\\":\\\"AND\\\", \\\"operands\\\": [ { \\\"attribute\\\":\\\"subject.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$_appId\\\" }, { \\\"attribute\\\":\\\"company.external_id\\\", \\\"operator\\\":\\\"=\\\", \\\"value\\\":\\\"$company_external_id\\\" } ] } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [\\\"company.*\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"rel\\\", \\\"rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies/{{policy1_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies",
+                            "{{policy1_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create CIQ Query - Company Licenses",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"read-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return all of the licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy1_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Query - User Resources",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"read-company-licenses\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return all of the licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy1_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries/{{query1_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries",
+                            "{{query1_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Data Per Well - Admin",
+                  "item": [
+                    {
+                      "name": "Create CIQ Policy - Get Some Data Per Well",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-data-per-year-site\",\n    \"display_name\": \"Get Data per Year and Site\",\n    \"description\": \"Get Data per Year and Site\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) WHERE subject.external_id = $_appId WITH subject MATCH (well:Well)-[:HAS_EMISSIONS|HAS_TYPE|HAS_DATA*3]->(emission:Emission)-[:HAS]->(emission_date:Property {type: 'name'}) WITH subject, well, emission_date.year AS year, count(*) AS emission_points\\\", \\\"filter\\\": [ ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"subject\\\", \\\"subject.*\\\", \\\"well\\\", \\\"well.*\\\", \\\"year\\\" ], \\\"aggregate_values\\\": [ \\\"emission_points\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Policy - Get Some Data Per Well",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-data-per-year-site\",\n    \"display_name\": \"Get Data per Well\",\n    \"description\": \"Get Data per Well\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\":\\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\":\\\"_Application\\\" }, \\\"condition\\\": { \\\"cypher\\\":\\\"MATCH (subject:_Application) WHERE subject.external_id = $_appId AND $_appId IN ['ZY82NyGQSR6uSOCgdqEuZAx'] WITH subject MATCH (well:Well)-[:HAS_EMISSIONS|HAS_TYPE*..2]->(emission_type:EmissionType)-[:HAS]->(emission_type_name:Property {type: 'name'}) WHERE emission_type_name.value IN ['Flaring', 'ColdVentilation'] WITH well, emission_type, emission_type_name MATCH (emission_type) ( ()-[:HAS_DATA|NEXT_DATE]-> (emission:Emission)){5} WITH well.external_id, emission_type_name.value, COLLECT(emission) AS emission_nodes ORDER BY well.external_id, emission_type_name.value\\\", \\\"filter\\\": [ ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"subject.*\\\", \\\"well.*\\\" \\\"emission_type_name.value\\\"], \\\"aggregate_values\\\": [ \\\"emission_nodes\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies/{{policy3_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies",
+                            "{{policy3_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create CIQ Query - Get Some Data Per Well",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-data-per-year-site\",\n    \"display_name\": \"Get Data per Year and Site\",\n    \"description\": \"Get Data per Year and Site\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy3_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"subject\\\", \\\"subject.external_id\\\", \\\"well.external_id\\\" ], \\\"aggregate_values\\\": [ \\\"emission_points\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Query - Get Some Data Per Well",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-data-per-year-site\",\n    \"display_name\": \"Get Data per Year and Site\",\n    \"description\": \"Get Data per Year and Site\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy3_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"subject.external_id\\\", \\\"well.external_id\\\" ], \\\"aggregate_values\\\": [ \\\"emission_types\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries/{{query3_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries",
+                            "{{query3_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Company Licenses as a user",
+                  "item": [
+                    {
+                      "name": "Create CIQ Policy - Company Licenses by User",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-company-licenses-for-user\",\n    \"display_name\": \"Get Company Licenses\",\n    \"description\": \"Given a company_external_id return a list of licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Token\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Token)-[:IDENTIFIES]->(user:User)-[rel:CAN_ACCESS]->(product:Product)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"Token\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"product.property.name\\\", \\\"product.external_id\\\" ], \\\"relationships\\\": [ \\\"rel\\\" ] } }\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Policy - Company Licenses by User",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"get-company-licenses-by-User\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return a list of companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy\": \"{ \\\"meta\\\": { \\\"policy_version\\\": \\\"1.0-ciq\\\" }, \\\"subject\\\": { \\\"type\\\": \\\"Account\\\" }, \\\"condition\\\": { \\\"cypher\\\": \\\"MATCH (subject:Account)-[:IDENTIFIES]->(person:Person)<-[:EMPLOYS]->(company:Company)-[jv_rel:OPERATES|PARTNERS]->(license:License)\\\", \\\"filter\\\": [ { \\\"app\\\": \\\"app1\\\", \\\"attribute\\\": \\\"subject.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$token.sub\\\" } ] }, \\\"allowed_reads\\\": { \\\"nodes\\\": [ \\\"person\\\", \\\"person.*\\\", \\\"company\\\", \\\"company.*\\\", \\\"license\\\", \\\"license.*\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\", \\\"jv_rel.*\\\" ] }}\",\n    \"status\": \"ACTIVE\"\n}\n",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/authorization-policies/{{policy2_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "authorization-policies",
+                            "{{policy2_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Create CIQ Query - Company Licenses by User",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"user.external_id\\\", \\\"user.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "Update CIQ Query - Company Licenses by User",
+                      "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"name\": \"read-company-licenses-by-user\",\n    \"display_name\": \"Get Company Licenses by User\",\n    \"description\": \"Given a user Bearer token return all of the companies and licenses\",\n    \"project_id\": \"{{project_id}}\",\n    \"policy_id\": \"{{policy2_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"person.external_id\\\", \\\"person.property.name\\\", \\\"company.external_id\\\", \\\"company.property.name\\\", \\\"license.external_id\\\", \\\"license.property.name\\\" ], \\\"relationships\\\": [ \\\"jv_rel\\\"] }\",\n    \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{ik_api_host}}/configs/v1/knowledge-queries/{{query2_id}}",
+                          "host": [
+                            "{{ik_api_host}}"
+                          ],
+                          "path": [
+                            "configs",
+                            "v1",
+                            "knowledge-queries",
+                            "{{query2_id}}"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Get ContX IQ Queries",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"{{query_name}}\",\n    \"display_name\": \"{{query_display_name}}\",\n    \"description\": \"{{query_description}}\",\n    \"project_id\": \"{{app_space_id}}\",\n    \"policy_id\": \"{{ciq_authorization_policy_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"product.external_id\\\", \\\"product.property.name\\\" ], \\\"relationships\\\": [], \\\"filter\\\": { \\\"attribute\\\": \\\"product.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$productExternalId\\\" } }\",\n    \"status\": \"ACTIVE\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{ik_api_host}}/configs/v1/knowledge-queries?project_id={{project_id}}",
+                      "host": [
+                        "{{ik_api_host}}"
+                      ],
+                      "path": [
+                        "configs",
+                        "v1",
+                        "knowledge-queries"
+                      ],
+                      "query": [
+                        {
+                          "key": "project_id",
+                          "value": "{{project_id}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get ContX IQ Policies",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"{{query_name}}\",\n    \"display_name\": \"{{query_display_name}}\",\n    \"description\": \"{{query_description}}\",\n    \"project_id\": \"{{app_space_id}}\",\n    \"policy_id\": \"{{ciq_authorization_policy_id}}\",\n    \"query\": \"{ \\\"nodes\\\": [ \\\"product.external_id\\\", \\\"product.property.name\\\" ], \\\"relationships\\\": [], \\\"filter\\\": { \\\"attribute\\\": \\\"product.external_id\\\", \\\"operator\\\": \\\"=\\\", \\\"value\\\": \\\"$productExternalId\\\" } }\",\n    \"status\": \"ACTIVE\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{ik_api_host}}/configs/v1/authorization-policies?project_id={{project_id}}",
+                      "host": [
+                        "{{ik_api_host}}"
+                      ],
+                      "path": [
+                        "configs",
+                        "v1",
+                        "authorization-policies"
+                      ],
+                      "query": [
+                        {
+                          "key": "project_id",
+                          "value": "{{project_id}}"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Execute",
+              "item": [
+                {
+                  "name": "Get Licenses by Company",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-IK-ClientKey",
+                        "value": "{{app_agent_token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{query1_id}}\", \n    \"input_params\": {\n        \"company_external_id\": \"red\"\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{ik_api_host}}/contx-iq/v1/execute",
+                      "host": [
+                        "{{ik_api_host}}"
+                      ],
+                      "path": [
+                        "contx-iq",
+                        "v1",
+                        "execute"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get Some Data per Well",
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-IK-ClientKey",
+                        "value": "{{app_agent_token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{query3_id}}\", \n    \"input_params\": {\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{ik_api_host}}/contx-iq/v1/execute",
+                      "host": [
+                        "{{ik_api_host}}"
+                      ],
+                      "path": [
+                        "contx-iq",
+                        "v1",
+                        "execute"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Get Companies and Licenses by User",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{user_token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-IK-ClientKey",
+                        "value": "{{app_agent_token}}",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{query2_id}}\", \n    \"input_params\": {\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{ik_api_host}}/contx-iq/v1/execute",
+                      "host": [
+                        "{{ik_api_host}}"
+                      ],
+                      "path": [
+                        "contx-iq",
+                        "v1",
+                        "execute"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "{{service_token}}",
+                "type": "string"
+              }
+            ]
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "policy3_id",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "query3_id",
+      "value": "",
+      "type": "default"
+    }
+  ]
 }
